@@ -15,6 +15,7 @@ time_graph <- ggplot(data=cleandata, aes(x=Year))+
   geom_line(aes(y = Total_Jail_Population), color = "yellow") +
   geom_line(aes(y = Total_Black_Jail_Population), color = "black") +
   geom_line(aes(y = Total_White_Jail_Population), color = "white") + 
+  scale_y_continuous(labels = scales::comma) +
   labs(title = "Total vs Black vs White Jail Population ", 
        x = "Year", 
        y = "Population")
