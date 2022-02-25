@@ -1,43 +1,44 @@
 ---
-title: "index.Rmd"
+title: "A3 - Incarceration Trends - Tom Jubin"
 output: html_document
 ---
 
 <!--Sourcing Files-->
-```{r setup, include=FALSE}
+```{r, source, echo=FALSE, warning=FALSE, include=FALSE}
+source("../source/graph_over_time.R")
+source("../source/variable_comparison.R")
+source("../source/map.R")
+source("../source/analysis.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 * **Author:** Tom Jubin @ tomjubin@uw.edu
 * **Affiliation:** INFO-201: Technical Foundations of Informatics - The Information School - University of Washington
 * **Date:** February 25, 2022
 
 ### Introduction:
-
+After studying the incarceration trends dataset and codebook, I decided the main variables I wanted to work with first were the total jail population, as well as the total black and white jail population. I wanted to see if there was a trend or any significant numbers within these three variables that would stick out. By charting these 3, I will be able to see if there is a relationship between these variables. After looking at these different race specific variables, I wanted to see if there would be a trend in the sex specific variables. Next I chose to look at the female jail population 15 to 64 and male jail population 15 to 64. I am curious to see if this will also produce results that are eye-opening. Finally for the map, I decided I wanted to focus on one specific type of incarceration: total jail from ice. By plotting this on a map, I will be able to see the concentrations of incarcerations from ice across the entire country, and can pinpoint which regions have a higher rate than others.
 ### Summary Paragraph w/ 5 Cited Values
+`r max_black_jail_pop` was the highest value for black jail population over the entire dataset, and it occured in the year 1993. `r max_white_jail_pop_during_max_black_jail_pop` was the value for the white jail population in the same year (1993) that the black jail population was the highest. `r total_jail_pop_during_max_black_jail_pop` was the value for the total jail population overall in the same year (1993) that the black jail population was the highest. After calculating these three values, there is something huge that stands out to me. The black jail population for 1993 was almost double the white jail population, as well as the fact that it accounts for almost half of the entire jail population itself. To me, this is not surprising, but shocking to see visually on the plot. There is clearly some racial discrimination going on here. Not only this, but this number for black jail population in 1993 is almost equal to the entire jail population a decade prior (1983). 
+
+`r max_female_15_64` is the highest value for female jail population age 15-64, and occurred in the year 2015. This is interesting because although just barely, it is actually higher than the max male jail population age 15-64. This is super interesting to me because I didn't think the female max would be higher than the male, but I was proven wrong.`r max_male_15_64`is the highest value for male jail population age 15-64, and occurred in the year 2016. This is interesting because it occurred just one year after the max for female, 2016 instead of 2015. This tells me that these two years had a high concentration of 15-64 year-olds in jail because of the entire dataset, the max for either sex occurred within a 2 year period.
+
+`r max_jail_from_ice` was the highest value for jail from ice for the year 2016 and was located in the state of New Jersey. This is interesting to see because it is not where I expected the most jail from ice to be, but that could be attributed to some missing data values. Overall still cool to see the distribution of jail from ice on a map of the USA.
 
 ### Trend Over Time Chart
+```{r, chart_1, echo = FALSE, warning = FALSE}
+ggplotly(time_graph)
+```
+For this chart, I plotted the total black jail population, total white jail population, and total jail population. By doing this, I can see the proportion of how many in jail were white or black compared to the overall total. This was eye-opening, as the black jail population always outnumbered the white jail population, and was always a significant chunk of the total population. This is a great way to see the racial discrimination over time, as no matter the year the results were always the same unfortunately. 
 
 ### Two Variable Comparison Chart
+```{r, chart_2, echo = FALSE, warning = FALSE}
+ggplotly(comparison)
+```
+For this chart, I plotted the female jail population age 15-64 and male jail population age 15-64. I was looking to see if either sex would have a significant dominance in the category, but that was not the case. Certain years females had more than males, and vice-versa. This shows that there is a somewhat "equal" distribution among the two, and that they are continually similar and consistent values for the variables.
 
 ### Map
-
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r, chart_3, echo = FALSE, warning = FALSE}
+ggplotly(Mappp)
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+For this map, I plotted the total jail from Ice because I wanted to see how people across the country were being impacted by this specific statistic. I've always been curious about the impact of Ice on this country, and I thought by creating a map would be a cool way to see it. Unfortunately the dark shaded states did not have data (n/a) for the year 2016, but I was still able to see the totals for the states with data for this year.
