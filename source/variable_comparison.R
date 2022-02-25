@@ -14,6 +14,7 @@ cleandata <- incarcerations_table %>%
 comparison <- ggplot(data=cleandata, aes(x=Year))+
   geom_line(aes(y = Female_Jail_Population_Age_15_64), color = "green") +
   geom_line(aes(y = Male_Jail_Population_Age_15_64), color = "purple") +
+  scale_y_continuous(labels = scales::comma) +
   labs(title = "Female vs Male Age 15-64 Jail Population", x = "Year", y = "Population")
 
 ggplotly(comparison)
