@@ -6,9 +6,6 @@ output: html_document
 <!--Sourcing Files-->
 ```{r, source, echo=FALSE, warning=FALSE, include=FALSE}
 source("../source/data_source.R")
-source("../source/graph_over_time.R")
-source("../source/variable_comparison.R")
-source("../source/map.R")
 source("../source/analysis.R")
 ```
 
